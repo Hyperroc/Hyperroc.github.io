@@ -523,10 +523,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h3 id="数据生成">数据生成</h3>
 <p>随机选取二维平面中的一点，将其其坐标作为 µx, µy；随机生成 σx, σy，然后通过概率分布 计算附近各点对应的概率，以某点概率乘以一个系数作为该点的钻石价值。简单的测试效果如 图1（左），其中颜色最深的点坐标为 (µx, µy) 随机生成 n 个聚簇中心，以聚簇中心坐标作为 µx, µy，按照上述方法以二维正态分布生成 矿脉分布。重叠区域直接累加，最终效果如图1（右）。</p>
 <center class="half">
-<img src="/.com//example.png" class="lazyload" data-srcset="/.com//example.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" style="zoom:50%;"> <img src="/.com//0.png" class="lazyload" data-srcset="/.com//0.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" style="zoom:50%;">
+<img src="/2021/12/10/test2/example.png" class="lazyload" data-srcset="/2021/12/10/test2/example.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" style="zoom:50%;"> <img src="/2021/12/10/test2/0.png" class="lazyload" data-srcset="/2021/12/10/test2/0.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" style="zoom:50%;">
 </center>
 <p>图1（右）中展示的地图已保存至 map10.csv 文件，可在 cpp 文件中调用 load_map() 函 数进行载入。在该地图所有矿脉分布完全可知（上帝视角）的情况下，利用全局动态规划求得 标准答案为 961.795，路径如下：</p>
-<p><img src="/.com//1.png" class="lazyload" data-srcset="/.com//1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" style="zoom:60%;"></p>
+<p><img src="/2021/12/10/test2/1.png" class="lazyload" data-srcset="/2021/12/10/test2/1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" style="zoom:60%;"></p>
 <h3 id="算法分析">算法分析</h3>
 <p>设金字塔层数为 n，当可探测层数为 n-1 时，问题的求解方式转变成了普通的全局动态规划， 即开启了“上帝视角”；当探测层数为 1 时，问题的求解方式退化成了单纯的贪心策略，即每次 选择价值最高的节点。</p>
 <p>对于如下示例</p>
@@ -567,7 +567,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-12-10T23:44:50+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-12-10T23:55:25+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Dec 10, 2021</p>

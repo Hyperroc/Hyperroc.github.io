@@ -11,10 +11,16 @@
         <content type="html"><![CDATA[<h2 id="实验内容及要求">实验内容及要求</h2><h3 id="问题叙述">问题叙述</h3><p>经典的钻石矿工问题描述如下：有一座金字塔，金字塔的每块石头上都镶有对应的钻石，钻石可以被取下来，不同的钻石有着不同的价值，例如图1所示，你的任务是从金字塔的顶端向金字塔的底端收集钻石，并且尽可能收集价值高的钻石，但是只能从一块砖斜向左下或斜向右下走到另一块砖上，如图 1 从用红色A标记的砖走向用蓝色B标记的砖上。请找到一个收集最高价值钻石的路线，并给出能够获得的最大钻石总价值？</p><p>在实际应用中，矿工事先往往无法提前知道金字塔的钻石分布。通常，他们只能估计面前 两个方块内的钻石数，或者租用探测器来获得面前 x 步（x&lt;n，n为金字塔的层数）内钻石的分布。又或者，假设他有一张残破的地图。在上述这些情况下的信息量和矿工的收益有怎样的关系呢？请设计并实现能够获得最大价值算法，包括找寻最佳路径及最大价值。</p><h3 id="实验内容">实验内容</h3><ul><li>数据生成：通过随机或高斯等随机方法生成矿产的模拟分布图</li><li>算法实现：分别基于 X 步（x&lt;n，n 为金字塔的层数）已知，实现蒙图版的挖矿算法</li><li>测试算法正确性，分析算法复杂度</li></ul><h2 id="实验环境">实验环境</h2><ul><li>操作系统：Windows 10</li><li>编程语言：C++（算法实现），Python（可视化分析）</li><li>开发工具：Visual Studio 2019，Jupyter Notebook</li><li>硬件配置：CPU Ryzen 5800h，RAM 16GB</li></ul><h2 id="实验过程">实验过程</h2><h3 id="数据生成">数据生成</h3><p>随机选取二维平面中的一点，将其其坐标作为 µx, µy；随机生成 σx, σy，然后通过概率分布 计算附近各点对应的概率，以某点概率乘以一个系数作为该点的钻石价值。简单的测试效果如 图1（左），其中颜色最深的点坐标为 (µx, µy) 随机生成 n 个聚簇中心，以聚簇中心坐标作为 µx, µy，按照上述方法以二维正态分布生成 矿脉分布。重叠区域直接累加，最终效果如图1（右）。</p><center class="half"><img src="/2021/12/10/test2/example.png" class="lazyload" data-srcset="/2021/12/10/test2/example.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" style="zoom:50%;"> <img src="/2021/12/10/test2/0.png" class="lazyload" data-srcset="/2021/12/10/test2/0.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" style="zoom:50%;"></center><p>图1（右）中展示的地图已保存至 map10.csv 文件，可在 cpp 文件中调用 load_map() 函 数进行载入。在该地图所有矿脉分布完全可知（上帝视角）的情况下，利用全局动态规划求得 标准答案为 961.795，路径如下：</p><p><img src="/2021/12/10/test2/1.png" class="lazyload" data-srcset="/2021/12/10/test2/1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" style="zoom:60%;"></p><h3 id="算法分析">算法分析</h3><p>设金字塔层数为 n，当可探测层数为 n-1 时，问题的求解方式转变成了普通的全局动态规划， 即开启了“上帝视角”；当探测层数为 1 时，问题的求解方式退化成了单纯的贪心策略，即每次 选择价值最高的节点。</p><p>对于如下示例</p><p><span class="math inline">\(\begin{matrix}5&amp;3&amp;3&amp;4&amp;3 \\ 1&amp;2&amp;5&amp;6 \\ 8&amp;7&amp;7 \\ 9&amp;1 \\ 2\end{matrix}\)</span></p><p>可探测层数为 1 时，其寻路过程如下：</p><p>（待续未完）</p>]]></content>
       
       
+      <categories>
+          
+          <category> Algorithm </category>
+          
+      </categories>
+      
       
         <tags>
             
-            <tag> 算法 </tag>
+            <tag> 动态规划 </tag>
             
         </tags>
       
